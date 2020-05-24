@@ -19,7 +19,7 @@ echo "Device reappeared after $((30 - wait_seconds)) seconds." >&2
 echo -n "Waiting for audio: " >&2
 wait_seconds=30
 until test $((wait_seconds--)) -eq 0 ; do
-    if ffprobe -f alsa -i $AUDIO_DEVICE > /dev/null 2>&1; then
+    if ffprobe -f pulse -i $PULSE_DEVICE > /dev/null 2>&1; then
         break
     fi
     echo -n "." >&2
